@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <style>
+        /* Reset dan Styling Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* Container Utama */
+        .payment-container {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Efek Glow */
+        .payment-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.1;
+            animation: glowing 20s linear infinite;
+        }
+        
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        
+        /* Header */
+        .payment-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .payment-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .payment-header p {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Metode Pembayaran */
+        .payment-method {
+            background-color: rgba(30, 30, 30, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+        }
+        
+        .payment-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-color: #555;
+        }
+        
+        .payment-method-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .dana { background-color: #118eea; }
+        .gopay { background-color: #00a650; }
+        .qris { background-color: #7b42f5; }
+        
+        .payment-method-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .payment-details {
+            margin-top: 10px;
+        }
+        
+        .payment-number {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 10px 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            word-break: break-all;
+        }
+        
+        .payment-note {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        /* QR Code */
+        .qris-code {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .qris-code img {
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid #444;
+        }
+        
+        .qris-code p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        /* Footer */
+        .payment-footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Responsif */
+        @media (max-width: 600px) {
+            .payment-container {
+                padding: 20px;
+            }
+            
+            .payment-header h1 {
+                font-size: 24px;
+            }
+            
+            .payment-number {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="payment-header">
+            <h1>PAYMENT Rulzyy</h1>
+            <p>Pilih metode pembayaran yang tersedia</p>
+        </div>
+        
+        <div class="payment-method">
+            <div class="payment-method-header">
+                <div class="payment-icon dana">D</div>
+                <h3>DANA</h3>
+            </div>
+            <div class="payment-details">
+                <div class="payment-number">089629224425</div>
+                <div class="payment-note">N/A: WA</div>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <div class="payment-method-header">
+                <div class="payment-icon gopay">G</div>
+                <h3>GOPAY</h3>
+            </div>
+            <div class="payment-details">
+                <div class="payment-number">089629224425</div>
+                <div class="payment-note">N/A: WA</div>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <div class="payment-method-header">
+                <div class="payment-icon qris">Q</div>
+                <h3>QRIS</h3>
+            </div>
+            <div class="payment-details">
+                <div class="qris-code">
+                    <img src="https://files.catbox.moe/r9c3v1.jpg" alt="QR Code">
+                    <p>Scan QR Code di atas untuk pembayaran</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="payment-footer">
+            <p>Pastikan untuk melakukan konfirmasi setelah pembayaran</p>
+        </div>
+    </div>
+</body>
+</html>>
+</html>
